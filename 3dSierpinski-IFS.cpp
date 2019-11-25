@@ -6,7 +6,6 @@
 #include <iostream>
 #include <cstdlib> //for RAND
 #include <vector> //for STL vector
-#include <cmath> //for sqrt
 
 using namespace std;
 //Draws a 3D Sierpinski Triangle as an Iterated Function System
