@@ -34,6 +34,18 @@ void DrawPoint3D(Vector3 pos, Color color) {
 return;
 }
 
+Color colorize(int i) {
+    int r,g,b;
+    Color color;
+    i/=10;
+    r=(i/(64*64))%255;
+    g=2*((i/128)%128);
+    b=128+i%128;
+    color=(Color){r,g,b,128};
+
+return color;
+}
+
 int main()
 {
 //Initialize Raylib
@@ -49,39 +61,72 @@ int main()
     SetCameraMode(camera,CAMERA_FREE);
     SetTargetFPS(30);
 
-    uint numPoints=30000;
+    uint numPoints=300000;
     int npf=30;
     float ix=0.0,iy=1.0,iz=0.0;
-    float a=2.24,b=0.43,c=-0.65,d=-2.43,e=1.0;
+    float p[5]={2.24,0.43,-0.65,-2.43,1.0};
     vector<Vector3>vec_list;
+    bool cycle=false, check[5]={false};
+    float cycle_inc=0.005;
 
     while (!WindowShouldClose()){
 //Update
     //The GUI
-    npf=GuiSlider({650,10,100,20},"K points",npf,30,500,true);
+    npf=GuiSlider({650,10,100,20},"K points",npf,30,800,true);
     numPoints=(uint)1000*npf;
 
-    ix=GuiSlider({150,10,50,20},"X",ix,-40.0,40.0,true);
-    iy=GuiSlider({250,10,50,20},"Y",iy,-40.0,40.0,true);
-    iz=GuiSlider({350,10,50,20},"Z",iz,-40.0,40.0,true);
+    ix=GuiSlider({150,10,100,20},"X",ix,-40.0,40.0,true);
+    iy=GuiSlider({300,10,100,20},"Y",iy,-40.0,40.0,true);
+    iz=GuiSlider({450,10,100,20},"Z",iz,-40.0,40.0,true);
 
-    a=GuiSlider({15,750,100,20},"A",a,-5.0,5.0,true);
-    b=GuiSlider({165,750,100,20},"B",b,-5.0,5.0,true);
-    c=GuiSlider({315,750,100,20},"C",c,-5.0,5.0,true);
-    d=GuiSlider({465,750,100,20},"D",d,-5.0,5.0,true);
-    e=GuiSlider({615,750,100,20},"E",e,-5.0,5.0,true);
+    p[0]=GuiSlider({15,750,100,20},"A",p[0],-5.0,5.0,true);
+    p[1]=GuiSlider({165,750,100,20},"B",p[1],-5.0,5.0,true);
+    p[2]=GuiSlider({315,750,100,20},"C",p[2],-5.0,5.0,true);
+    p[3]=GuiSlider({465,750,100,20},"D",p[3],-5.0,5.0,true);
+    p[4]=GuiSlider({615,750,100,20},"E",p[4],-5.0,5.0,true);
+
+    GuiLabel({150,40,100,20},"Cycle Parameters");
+    cycle=GuiCheckBox({250,40,20,20},"",cycle);
+
+    for (uint i=0;i<5;i++) {
+        check[i]=GuiCheckBox({15+(150*i),725,20,20},"",check[i]);
+    }
 
 
     vec_list.clear();
     Vector3 pos={ix,iy,iz};
-    float tempx=0.0;
+    float tempx=0.0,tempy=0.0,tempz=0.0;
     for (uint i=0;i<numPoints;i++){
         vec_list.push_back(pos);
         //The attractor equations
-        tempx=sin(a*pos.y)-pos.z*cos(b*pos.x);
-        pos.y=pos.z*sin(c*pos.x)-cos(d*pos.y);
-        pos.z=e*sin(pos.x);
+        tempx=sin(p[0]*pos.y)-pos.z*cos(p[1]*pos.x);
+        pos.y=pos.z*sin(p[2]*pos.x)-cos(p[3]*pos.y);
+        pos.z=p[4]*sin(pos.x);
         pos.x=tempx;
+    }
+
+    if (cycle) {
+        uint i=0;
+        while (i<5) {
+            if (check[i]==true) {
+                p[i]+=cycle_inc;
+                if (p[i]>5.0) {
+                    p[i]=-5.0;
+                    uint j=i;
+                    if (j<4) {
+                        j++;
+                        while (j<5) {
+                            if (check[j]==true) {
+                                p[j]+=cycle_inc;
+                            }
+                            j++;
+                        }
+                    }
+                }
+                break;
+            }
+            i++;
+        }
     }
 
 //Draw
