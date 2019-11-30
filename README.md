@@ -14,9 +14,9 @@ Plots the Lorenz attractor using lines in 3D space.
 <b>Prime Viewer:</b>
 Four ways to visualize the distribution of all primes less than 1,000,000.  Press 1, 2, 3 or 4 to change view modes.
 Mode 1: Plots primes as semi-transparent white cubes on a 100x100x100 grid.  Rotate and pan the view to see rows of numbers eliminated.
-![View Mode 1](PrimeViewer1.png)
+![View Mode 1](images/PrimeViewer1.png)
 Mode 2: Plots primes as white cubes, other numbers are color-coded by the lowest prime factor that makes them not prime.  Primes can be turned off with check box.  Use the sliders to see how non-primes are arranged by their least common factor.
-![View Mode 2](PrimeViewer2.png)
+![View Mode 2](images/PrimeViewer2.png)
 Mode 3: Wheel factorization, using sectors.  Use the spinner to choose your factor base for the wheel.
 Mode 4: Wheel factorization, using points.  Same as above, but points look better for high factor bases.
 
