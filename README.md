@@ -35,3 +35,8 @@ To explore the equation's behavior in a different way, set split value to zero, 
 The data is two dimensional only, but I used a 3D view because it provided an easy tilt, pan and zoom until I become more familiar with coding in RayLib's 2D modes.
 
 ![Bifurcation Normal Display](images/Bifurc1small.png) ![Bifurcation Alt View](images/Bifurc2small.png)
+
+<b>Raindrop generator</b>
+Simulates raindrops coalescing and falling down a window pane, which I've always found beautiful.
+The code isn't pretty however.  I was experimenting with C++ classes.  The program runs slowly because drop collision detection is implemented naively: every drop is checked against every other one every frame, so it's O(N^2).  Far better would be to use a tree or map to do collision detection, but I didn't implement that.
+![Raindrops](images/Raindrops.png)
