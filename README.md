@@ -24,7 +24,7 @@ Mode 4: Wheel factorization, using points.  Same as above, but points look bette
 Uses an Iterated Function System to generate a 3D Sierpinski triangle.  (Technically, a pyramid, I suppose...)
 IFS = a recursive system of affine transformations applied to random starting points, which converge to the final shape.
 The shape is fractal, although visualization is limited by resolution.
-![Sierpinski Triangles](images/Sierpinski-Triangles1.png]
+![Sierpinski Triangles](images/Sierpinski-Triangles1.png)
 
 <b>3D Bifurcation Diagram of the Logistic Map</b>
 Plots the values of the logistic map recursive equation: x=kx*(1-x), x={0,1.0} against various values of K.
