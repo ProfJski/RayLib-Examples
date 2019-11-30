@@ -33,3 +33,4 @@ To generate the usual textbook figure, keep the "split value" slider set at 64 o
 The program computes the value of X recursively 300 times, but does not plot the value of X for the first iterations up to the "split value" after which it does plot them.  Thus, a higher split value permits visualization of stable periods.
 To explore the equation's behavior in a different way, set split value to zero, which plots all values of X, and explore the polynomial curves which result from starting values of X close to 0.0 or 1.0.
 The data is two dimensional only, but I used a 3D view because it provided an easy tilt, pan and zoom until I become more familiar with coding in RayLib's 2D modes.
+![Bifurcation Normal Display](images/Bifurc1small.png) ![Bifurcation Alt View](images/Bifurc2small.png)
