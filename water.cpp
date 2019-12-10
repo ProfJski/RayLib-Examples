@@ -3,7 +3,6 @@
 #define RAYGUI_IMPLEMENTATION
 #include "raygui.h"
 #include <iostream>
-#include <cmath> //for floor
 
 //Water model by Eric J. Jenislawski
 //RayLib graphics by Ramon Santamaria
