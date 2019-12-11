@@ -33,7 +33,7 @@ Color colorizer(matter* matArray, int xsize, int zsize, int posx, int posz, Vect
     //Below I approximate the slope of the water surface by averaging the heights of the nearest neighbors in the x and z axes.
     //Then I use that to calculate surface normal.  This is quick and dirty.  There are several more accurate ways to take a discrete derivative
     //This algorithm tends to introduce some pixelation at high frequency locations.  Basically we want gradient of height field here.
-    //Low order Runge-Kutta approximation would be better here
+    //Low order finite difference approximation would be better here
     xvector=(Vector3){2,matArray[(posx+1)+xsize*posz].height-matArray[(posx-1)+xsize*posz].height,0}; //calculate dy/dx - slope along x axis
     zvector=(Vector3){0,matArray[posx+xsize*(posz+1)].height-matArray[posx+xsize*(posz-1)].height,2}; //calculate dz/dx - slope along z axis
     normal=Vector3Scale(Vector3Normalize(Vector3CrossProduct(xvector,zvector)),-1.0); // cross product gives us normal vector.  Scaled by -1.0 to point up.
@@ -48,7 +48,7 @@ Color colorizer(matter* matArray, int xsize, int zsize, int posx, int posz, Vect
 //Update height of voxel according to velocity
 void update_height(matter* matArray, int xsize, int zsize) {
     for (int i=0;i<xsize;i++) {
-        for (int j=0;j<xsize;j++) {
+        for (int j=0;j<zsize;j++) {
             matArray[i+xsize*j].height+=matArray[i+xsize*j].vel;
         }
     }
