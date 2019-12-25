@@ -7,8 +7,7 @@
 
 using namespace std;
 
-
-//Water model by Eric J. Jenislawski
+//Ripple Tank Simulator by Eric J. Jenislawski
 //RayLib graphics by Ramon Santamaria
 
 struct matter {
@@ -17,6 +16,12 @@ struct matter {
     float height=0.0;
     float vel=0.0;
     bool boundary=false;
+};
+
+struct sphere {
+    Vector3 location=(Vector3){100.0,0.0,100.0};
+    Vector3 velocity=(Vector3){0.0,0.0,0.0};
+    Color color=GREEN;
 };
 
 Color colorizer(matter* matArray, int xsize, int zsize, int posx, int posz, Vector3 eye) {
@@ -96,6 +101,46 @@ void calc_gradient_and_normal(matter* matArray, int xsize, int zsize) {
 return;
 }
 
+void update_spheres(sphere* spheres, matter* matArray, int xsize, int zsize, int num_spheres) {
+    int xpos, zpos;
+    float depth, subvol, temp;
+    Vector3 temploc=(Vector3){0.0,0.0,0.0}, tempvel=(Vector3){0.0,0.0,0.0};
+    for (int s=0;s<num_spheres;s++) {
+        temploc=(Vector3){0.0,0.0,0.0};
+        tempvel=(Vector3){0.0,0.0,0.0};
+        xpos=(int)spheres[s].location.x;
+        zpos=(int)spheres[s].location.z;
+        depth=matArray[xpos+zpos*xsize].height-spheres[s].location.y;
+        //volume of sphere underwater if it is z of 2r submerged: pi*(-z^3/3+r*z^2) --> vol * mass of water displaced = bouyant force upward by Archimedes' principle
+        if (depth<0) { //ball is higher than water, so falls straight down
+            spheres[s].velocity.y-=0.9; // taking -.9 as accel grav
+        }
+        else { //otherwise it is touching or partially/wholly submerged
+            if (depth>2.0) {depth=2.0;} // presuming sphere of radius one, if depth > 2.0, it is wholly submerged
+            subvol=PI*(-1.0*depth*depth*depth/3.0+1.0*depth*depth); // 1.0 factor=radius of sphere;
+            spheres[s].velocity.x-=5.0*matArray[xpos+zpos*xsize].gradient.x; // 5.0 arbitrary scale factor till it "looks right"
+            spheres[s].velocity.z-=5.0*matArray[xpos+zpos*xsize].gradient.z;
+            spheres[s].velocity.y+=subvol-0.9; //taking density of water here as 1.0, -0.9 because gravity still weighing it down too;
+            spheres[s].velocity.y+=matArray[xpos+zpos*xsize].vel; //if submerged, water velocity upward will also transfer to sphere
+            spheres[s].velocity=Vector3Add(spheres[s].velocity,Vector3Scale(spheres[s].velocity,-0.01*Vector3Length(spheres[s].velocity)));  //viscosity drag
+        }
+
+    temploc=Vector3Add(spheres[s].location,Vector3Scale(spheres[s].velocity,0.03));  // temporarily assign position before checking for collision with boundary
+    if (matArray[(int)(temploc.x)+(int)(temploc.z)*xsize].boundary) {
+        tempvel=spheres[s].velocity;
+        temp=tempvel.x;  // Do a simple, kludgy 90-degree reflection using negative reciprocal of incident velocity
+        tempvel.x=-tempvel.z;
+        tempvel.z=temp;
+        spheres[s].velocity=tempvel;
+        spheres[s].location=Vector3Add(spheres[s].location,Vector3Scale(spheres[s].velocity,0.03));
+    }
+    else {
+        spheres[s].location=temploc;
+    }
+}
+return;
+}
+
 int main()
 {
 //Initialize Raylib
@@ -114,6 +159,8 @@ int main()
 
     int xsize=200, zsize=200;
     matter matArray[xsize*zsize];
+    int num_spheres=20;
+    sphere spheres[20];
     Vector3 loc=(Vector3){0.0,0.0,0.0};
     bool paused=false;
 
@@ -148,6 +195,14 @@ int main()
     }
 */
 
+    for (int i=0,posx=0,posz=0;i<num_spheres;i++) {
+        posx=rand()%xsize;
+        posz=rand()%zsize;
+        spheres[i].location=(Vector3){posx,1.0,posz};
+        if (i%2==0) {spheres[i].color=GREEN;} else {spheres[i].color=RED;}
+    }
+
+
     while (!WindowShouldClose()){
 //Update
 //Get Input
@@ -156,6 +211,7 @@ int main()
         matArray[50+xsize*150].height+=5.0;
         matArray[150+xsize*150].height+=5.0;
     }
+
     if (IsMouseButtonDown(MOUSE_LEFT_BUTTON)) {  // Lets you put drops wherever you want
         RayHitInfo result;
         result=GetCollisionRayGround(GetMouseRay(GetMousePosition(), camera),1.0);
@@ -165,12 +221,14 @@ int main()
         }
 
     }
+
     if (IsKeyPressed(KEY_R)) {  // Reset the system = water is calm
         for (int i=0;i<xsize*zsize;i++) {
             matArray[i].vel=0.0;
             matArray[i].height=0.0;
         }
     }
+
     if (IsMouseButtonDown(MOUSE_RIGHT_BUTTON)) {  // Right click lets you put boundaries wherever you want, hold E to erase
         RayHitInfo result;
         result=GetCollisionRayGround(GetMouseRay(GetMousePosition(), camera),1.0);
@@ -178,15 +236,22 @@ int main()
         if ((result.position.x>0)&&(result.position.x<xsize)&&(result.position.z>0)&&(result.position.z<zsize)){  // Discard mouse clicks out-of-bounds or else SEGFAULT on array access
             matArray[(int)(result.position.x)+xsize*(int)(result.position.z)].height=0.0;
             matArray[(int)(result.position.x)+xsize*(int)(result.position.z)].vel=0.0;
-            if (IsKeyDown(KEY_E)) {
-                matArray[(int)(result.position.x)+xsize*(int)(result.position.z)].boundary=false;
+            if (IsKeyDown(KEY_X)) {
+                for (int i=0;i<xsize;i++) {
+                    matArray[i+(int)(result.position.z)*xsize].boundary=!IsKeyDown(KEY_E);
+                }
+            }
+            else if (IsKeyDown(KEY_Z)) {
+                for (int j=0;j<zsize;j++) {
+                    matArray[(int)(result.position.x)+j*xsize].boundary=!IsKeyDown(KEY_E);
+                }
             }
             else {
-                matArray[(int)(result.position.x)+xsize*(int)(result.position.z)].boundary=true;
+                matArray[(int)(result.position.x)+xsize*(int)(result.position.z)].boundary=!IsKeyDown(KEY_E);
             }
         }
-
     }
+
     if (IsKeyPressed(KEY_P)) {  // Pauses the system
         paused=!paused;
     }
@@ -196,6 +261,7 @@ int main()
         update_height(matArray,xsize,zsize);
         update_vel(matArray,xsize,zsize);
         calc_gradient_and_normal(matArray,xsize,zsize);
+        update_spheres(spheres,matArray,xsize,zsize,num_spheres);
     }
 
 
@@ -218,6 +284,10 @@ int main()
                 //DrawLine3D(loc,Vector3Add(loc,matArray[i+xsize*j].gradient),ORANGE);  // Uncomment to draw gradient
                 //DrawLine3D(loc,Vector3Add(loc,matArray[i+xsize*j].normal),GREEN);  // Uncomment to draw normal to surface
             }
+        }
+
+        for (int s=0;s<num_spheres;s++) {
+            DrawSphere(spheres[s].location,1.0,spheres[s].color);
         }
 
         UpdateCamera(&camera);
