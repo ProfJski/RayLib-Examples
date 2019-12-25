@@ -3,9 +3,7 @@ Some fun math or physics demos made easy with RayLib
 
 <b>Water Sim: Ripple Tank Physics</b>
 Simulates water in a ripple tank.  Demonstrates basic wave mechanics: wave reflection, diffraction, and superimposition.  
-Press "P" to pause the simulation and "R" to reset it.
-Left-click to add a drop to the pool, or left-click and drag to run your finger through the water.
-Right-click to draw boundaries.  Hold "E" while right-clicking to erase them.
+Press "P" to pause the simulation and "R" to reset it. Left-click to add a drop to the pool, or left-click and drag to run your finger through the water. Right-click to draw boundaries.  Hold "E" while right-clicking to erase them.  Hold X to draw a straight-line boundary across the x-axis.  Hold Z for z-axis.  Hold X and E to erase a whole line.  Alter the code to add as many colored floating spheres as you'd like, or none.
 ![Water Ripple Tank Sim](images/water1.png)
 
 <b>Strange Attractor:</b>
