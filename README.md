@@ -6,7 +6,7 @@ Simulates water in a ripple tank.  Demonstrates basic wave mechanics: wave refle
 Press "P" to pause the simulation and "R" to reset it.
 Left-click to add a drop to the pool, or left-click and drag to run your finger through the water.
 Right-click to draw boundaries.  Hold "E" while right-clicking to erase them.
-![Water Ripple Tank Sim](images/water1.pgn)
+![Water Ripple Tank Sim](images/water1.png)
 
 <b>Strange Attractor:</b>
 Plots the Clifford Pickover attractor, a point cloud in 3D space.
