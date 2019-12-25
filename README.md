@@ -1,6 +1,13 @@
 # RayLib-Examples
 Some fun math or physics demos made easy with RayLib
 
+<b>Water Sim: Ripple Tank Physics</b>
+Simulates water in a ripple tank.  Demonstrates basic wave mechanics: wave reflection, diffraction, and superimposition.  
+Press "P" to pause the simulation and "R" to reset it.
+Left-click to add a drop to the pool, or left-click and drag to run your finger through the water.
+Right-click to draw boundaries.  Hold "E" while right-clicking to erase them.
+![Water Ripple Tank Sim](images/water1.pgn)
+
 <b>Strange Attractor:</b>
 Plots the Clifford Pickover attractor, a point cloud in 3D space.
 Top sliders demonstrate the fact that the system is an attractor: initial conditions don't change the shape.
