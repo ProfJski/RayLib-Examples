@@ -41,9 +41,9 @@ The data is two dimensional only, but I used a 3D view because it provided an ea
 
 ![Bifurcation Normal Display](images/Bifurc1small.png) ![Bifurcation Alt View](images/Bifurc2small.png)
 
-<b>Raindrop generator</b>
+<b>Raindrop simulator</b>
 Simulates raindrops coalescing and falling down a window pane, which I've always found beautiful.
-The code isn't pretty however.  I was experimenting with C++ classes.  The program runs slowly because drop collision detection is implemented naively: every drop is checked against every other one every frame, so it's O(N^2).  Far better would be to use a tree or map to do collision detection, but I didn't implement that.
+The code isn't pretty; I was experimenting with C++ classes.  Raindrops 2.0 brings improved collision detection with much faster performance.  Large, fast drops now leave streaks of droplets behind them on the glass.  Drop shape now changes with velocity.
 ![Raindrops](images/Raindrops.png)
 
 <b>Koch Curve</b>
