@@ -57,3 +57,7 @@ In Blue: The above, but gathered into logarithmically spaced bins which better i
 The code provides multiple windowing functions for the DFFT: Hann, Hamming, Blackman-Harris, Flat-top and Dolph-Chebyshev windows.  The latter is enabled by default, since it gives narrowest frequency resolution with flat sidelobe response.
 Still a work-in-progress!
 ![Audio Analyzer](images/Audio2.png)
+
+<b>Apollonian Gasket Generator</b>
+Some simple code to generate an Apollonian Gasket: a fractal that recursively packs a space with tangential circles.
+![Apollonian Gasket](images/ApollonianGasket.png)
