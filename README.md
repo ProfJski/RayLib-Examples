@@ -14,7 +14,8 @@ Check boxes allow you to cycle through two parameters gradually to see the chang
 ![Clifford Strange Attractor](images/StrangeAttractor1.png)
 
 <b>Lorenz Attractor:</b>
-Plots the Lorenz attractor using lines in 3D space.
+Plots the Lorenz attractor using lines in 3D space.  Use X, Y, Z controls to specify the initial point, which shows that the system is indeed an attractor.  One of the earliest "strange attractors" in chaos theory.
+![Lorenz Attractor](images/Lorenz.png)
 
 <b>Prime Viewer:</b>
 Four ways to visualize the distribution of all primes less than 1,000,000.  Press 1, 2, 3 or 4 to change view modes.
