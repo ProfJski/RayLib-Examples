@@ -8,62 +8,6 @@
 
 using namespace std;
 
-float mapper(float input) {
-    while (input>360) {input-=360;}
-    while (input<0) {input+=360;}
-
-    float output=0.0;
-    if ( (input>0) && (input<=60.0) ) {  //(0,60) to (0,45)
-        output=0.75*input;
-        return output;
-    }
-    if ( (input>60.0) && (input<=160.0) ) {  // (80,160) to (45,70)
-        output=45.0+0.25*(input-60.0);
-        return output;
-    }
-    if ( (input>160.0) && (input<=240.0) ) { //(160,240) to (70,230)
-        output=70+2.0*(input-160.0);
-        return output;
-    }
-    if ( (input>200.0) && (input<=360.0) ) { // (240,360) to (230,350)
-        output=230+1.0*(input-240.0);
-    return output;
-}
-return 0.0;
-}
-
-Color ryb2rgb(int r, int y, int b) {
-    Color out;
-
-//    cout<<"Inputs. R="<<r<<" Y="<<y<<" B="<<b<<endl;
-	int w=min(min(r,y),b); //w = whiteness
-//	cout<<"whiteness="<<w<<endl;
-    r-=w; y-=w; b-=w;
-
-    int my=max(max(r,y),b);
-//    cout<<"My="<<my<<endl;
-
-    int g=min(y,b); //remove green from yellow and blue
-    y-=g;
-    b-=g;
-
-    b*=2; g*=2;
-    r+=y; g+=y;
-
-    int mg=max(max(r,g),b);
-//    cout<<"Mg="<<mg<<endl;
-    if (mg>0) {
-        float n=(float)my/(float)mg;
-        r*=n; g*=n; b*=n;
-    }
-
-    r+=w; g+=w; b+=w;
-
-//    cout<<"Output R="<<r<<" G="<<g<<" B="<<b<<endl;
-    out.r=r; out.g=g; out.b=b; out.a=255;
-    return out;
-}
-
 Color Xform_RYB2RGB(int r, int y, int b) {
     float rin=(float)r/255.0;
     float yin=(float)y/255.0;
