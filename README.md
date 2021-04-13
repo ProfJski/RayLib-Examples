@@ -1,15 +1,15 @@
 # RayLib-Examples
 Some fun math or physics demos made easy with [RayLib](https://github.com/raysan5/raylib)
 
-*Note that the examples with GUIs also require [RayGui](https://github.com/raysan5/raygui), an optional companion to RayLib*
+*Note that the examples with GUIs also require [RayGui](https://github.com/raysan5/raygui), an optional companion to RayLib that is super-easy to install*
 
-<b>Water Sim: Ripple Tank Physics</b>
+## Water Sim: Ripple Tank Physics
 Simulates water in a ripple tank.  Demonstrates basic wave mechanics: wave reflection, diffraction, and superimposition.
 
 Press "P" to pause the simulation and "R" to reset it. Left-click to add a drop to the pool, or left-click and drag to run your finger through the water. Right-click to draw boundaries.  Hold "E" while right-clicking to erase them.  Hold X to draw a straight-line boundary across the x-axis.  Hold Z for z-axis.  Hold X and E to erase a whole line.  Alter the code to add as many colored floating spheres as you'd like, or none.
 ![Water Ripple Tank Sim](images/water.gif)
 
-<b>Strange Attractor:</b>
+## Strange Attractor:
 Plots the Clifford Pickover attractor, a point cloud in 3D space.
 
 Top sliders demonstrate the fact that the system is an attractor: initial conditions don't change the shape.
@@ -18,18 +18,18 @@ Check boxes allow you to cycle through two parameters gradually to see the chang
 
 ![Clifford Strange Attractor](images/StrangeAttractor1.png)
 
-<b>Lorenz Attractor:</b>
+## Lorenz Attractor:
 Plots the Lorenz attractor using lines in 3D space.  Use X, Y, Z controls to specify the initial point, which shows that the system is indeed an attractor.  One of the earliest "strange attractors" in chaos theory.
 
 ![Lorenz Attractor](images/Lorenz.png)
 
-<b>Prime Viewer:</b>
+## Prime Viewer:
 Four ways to visualize the distribution of all primes less than 1,000,000.  Press 1, 2, 3 or 4 to change view modes.
 * Mode 1: Plots primes as semi-transparent white cubes on a 100x100x100 grid.  Rotate and pan the view to see rows of numbers eliminated.
 * Mode 2: Plots primes as white cubes, other numbers are color-coded by the lowest prime factor that makes them not prime.  Primes can be turned off with check box.  Use the sliders to see how non-primes are arranged by their least common factor.
 * Mode 3: Wheel factorization, using sectors.  Use the spinner to choose your factor base for the wheel.
 * Mode 4: Wheel factorization, using points.  Same as above, but points look better for high factor bases.
-* 
+
 ![View Mode 2](images/PrimeViewer2.png)
 
 ## 3D Sierpinsky Triangles IFS
