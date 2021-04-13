@@ -1,8 +1,7 @@
 # RayLib-Examples
 Some fun math or physics demos made easy with [RayLib](https://github.com/raysan5/raylib)
 
-*Note that the examples with GUIs also require [RayGui](https://github.com/raysan5/raygui), an optional companion to RayLib that is super-easy to install*
-*Older examples may need to be updated because of a breaking change in raylib 3.7.  If you get `camera.type` error, change it to `camera.projection` *
+Note that the examples with GUIs also require [RayGui](https://github.com/raysan5/raygui), an optional companion to RayLib that is super-easy to install. Older examples may need to be updated because of a breaking change in raylib 3.7.  If you get `camera.type` error, simply change `camera.type` to `camera.projection`
 
 ## Water Sim: Ripple Tank Physics
 Simulates water in a ripple tank.  Demonstrates basic wave mechanics: wave reflection, diffraction, and superimposition.
