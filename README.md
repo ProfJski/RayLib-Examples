@@ -15,10 +15,12 @@ Plots the Clifford Pickover attractor, a point cloud in 3D space.
 Top sliders demonstrate the fact that the system is an attractor: initial conditions don't change the shape.
 Bottom sliders vary the parameters of the system, giving rise to a wide variety of attractor shapes.
 Check boxes allow you to cycle through two parameters gradually to see the changes.
+
 ![Clifford Strange Attractor](images/StrangeAttractor1.png)
 
 <b>Lorenz Attractor:</b>
 Plots the Lorenz attractor using lines in 3D space.  Use X, Y, Z controls to specify the initial point, which shows that the system is indeed an attractor.  One of the earliest "strange attractors" in chaos theory.
+
 ![Lorenz Attractor](images/Lorenz.png)
 
 <b>Prime Viewer:</b>
@@ -27,15 +29,17 @@ Four ways to visualize the distribution of all primes less than 1,000,000.  Pres
 * Mode 2: Plots primes as white cubes, other numbers are color-coded by the lowest prime factor that makes them not prime.  Primes can be turned off with check box.  Use the sliders to see how non-primes are arranged by their least common factor.
 * Mode 3: Wheel factorization, using sectors.  Use the spinner to choose your factor base for the wheel.
 * Mode 4: Wheel factorization, using points.  Same as above, but points look better for high factor bases.
+* 
 ![View Mode 2](images/PrimeViewer2.png)
 
-<b>3D Sierpinsky Triangles IFS</b>
+## 3D Sierpinsky Triangles IFS
 Uses an Iterated Function System to generate a 3D Sierpinski triangle.  (Technically, a pyramid, I suppose...)
 IFS = a recursive system of affine transformations applied to random starting points, which converge to the final shape.
 The shape is fractal, although visualization is limited by resolution.
+
 ![Sierpinski Triangles](images/Sierpinski-Triangles1.png)
 
-<b>3D Bifurcation Diagram of the Logistic Map</b>
+## 3D Bifurcation Diagram of the Logistic Map
 Plots the values of the logistic map recursive equation: x=kx*(1-x), x={0,1.0} against various values of K.
 This simple equation is historically important in the history of chaos theory because it was believed to be well-behaved, since for many values of k, the recursion converges to a single value of x after a few iterations.  Only later was discovered values of K for which the system alternates between two or more values.  As can be seen from the diagram, some values of K produce wild results.
 To generate the usual textbook figure, keep the "split value" slider set at 64 or higher and the starting value for X anywhere.
@@ -45,16 +49,16 @@ The data is two dimensional only, but I used a 3D view because it provided an ea
 
 ![Bifurcation Normal Display](images/Bifurc1small.png) ![Bifurcation Alt View](images/Bifurc2small.png)
 
-<b>Raindrop simulator</b>
+## Raindrop simulator
 Simulates raindrops coalescing and falling down a window pane, which I've always found beautiful.
 The code isn't pretty; I was experimenting with C++ classes.  Raindrops 2.0 brings improved collision detection with much faster performance.  Large, fast drops now leave streaks of droplets behind them on the glass.  Drop shape now changes with velocity.
 ![Raindrops](images/raindrops.gif)
 
-<b>Koch Curve</b>
+## Koch Curve
 Generates a Koch Curve a/k/a Koch "Snowflake" by starting with an equilateral triangle, then trisecting each line, and building a smaller equilateral triangle on the middle third of each line.  The process is then repeated recursively.  Beyond 8 levels of recursion, the results are no longer visible, but the shape is rather complex.  Koch Curves have interesting properties as the number of recursions grows to infinity.  The area converges to a finite area.  The perimeter, however, grows unbounded, to infinity.  As a result, in the limit case, one has a figure with infinite perimeter surrounding a finite area, and thus an area to perimeter ratio of zero!  You can select the number of recursions using the slider.  Clicking the "analysis" checkbox will display values for the perimeter, area and area/perimeter ratio for your selected level of recursion, together with the limit values, so you can compare. A simple circle inscribing the figure helps to emphasize that the area will always be finite at higher recursion levels: the figure never grows outside the circle, even though its border grows longer exponentially.
 ![Koch Curve](images/KochCurve1.png)
 
-<b>Audio Oscilloscope and Frequency Analyzer</b>
+## Audio Oscilloscope and Frequency Analyzer
 Loads a wave file, plays it, and provides the following in real time:
 In Red: Time-domain plot of audio amplitude (oscilloscope)
 In Orange: Discrete Fast Fourier Transform of audio sample (Frequency domain plot) to Nyquist frequency, with peak dots
@@ -63,6 +67,10 @@ The code provides multiple windowing functions for the DFFT: Hann, Hamming, Blac
 Still a work-in-progress!
 ![Audio Analyzer](images/Audio2.png)
 
-<b>Apollonian Gasket Generator</b>
+## Apollonian Gasket Generator
 Some simple code to generate an Apollonian Gasket: a fractal that recursively packs a space with tangential circles.
 ![Apollonian Gasket](images/ApollonianGasket.png)
+
+## Linear Interpolation between Cartesian and Polar coordinates
+Lerp *all* the things!  Quick and dirty l-interp between two sets of points.  There are certainly more elegant ways to do this, but the transformation is fun to watch.
+![Lerp Cartesian to Polar](images/polerp.gif)
