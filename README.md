@@ -72,5 +72,5 @@ Some simple code to generate an Apollonian Gasket: a fractal that recursively pa
 ![Apollonian Gasket](images/ApollonianGasket.png)
 
 ## Linear Interpolation between Cartesian and Polar coordinates
-Lerp *all* the things!  Quick and dirty l-interp between two sets of points: sine function plotted against a Cartesian grid to polar.  There are certainly more elegant ways to do this, but I just made it because I wondered what a gradual tranformation to polar would look like.
+Lerp *all* the things!  Quick and dirty l-interp between two sets of points: sine function plotted against a Cartesian grid to polar.  There are certainly more elegant ways to do this, but I just made it because I wondered what a gradual tranformation to polar would look like.  Much smoother in the program, but I had to keep the file size down.
 ![Lerp Cartesian to Polar](images/polerp2.gif)
