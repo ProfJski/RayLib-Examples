@@ -2,6 +2,7 @@
 Some fun math or physics demos made easy with [RayLib](https://github.com/raysan5/raylib)
 
 *Note that the examples with GUIs also require [RayGui](https://github.com/raysan5/raygui), an optional companion to RayLib that is super-easy to install*
+*Older examples may need to be updated because of a breaking change in raylib 3.7.  If you get `camera.type` error, change it to `camera.projection` *
 
 ## Water Sim: Ripple Tank Physics
 Simulates water in a ripple tank.  Demonstrates basic wave mechanics: wave reflection, diffraction, and superimposition.
@@ -51,7 +52,7 @@ The data is two dimensional only, but I used a 3D view because it provided an ea
 
 ## Raindrop simulator
 Simulates raindrops coalescing and falling down a window pane, which I've always found beautiful.
-The code isn't pretty; I was experimenting with C++ classes.  Raindrops 2.0 brings improved collision detection with much faster performance.  Large, fast drops now leave streaks of droplets behind them on the glass.  Drop shape now changes with velocity.
+The code isn't pretty; I was experimenting with C++ classes.  Raindrops 2.0 brings improved collision detection with much faster performance.  Large, fast drops now leave streaks of droplets behind them on the glass.  Drop shape now changes with velocity.  Number below the frame rate is the number of drops in the simulation.  You can alter the code to change drop size and frequency.
 ![Raindrops](images/raindrops.gif)
 
 ## Koch Curve
@@ -72,5 +73,5 @@ Some simple code to generate an Apollonian Gasket: a fractal that recursively pa
 ![Apollonian Gasket](images/ApollonianGasket.png)
 
 ## Linear Interpolation between Cartesian and Polar coordinates
-Lerp *all* the things!  Quick and dirty l-interp between two sets of points.  There are certainly more elegant ways to do this, but the transformation is fun to watch.
-![Lerp Cartesian to Polar](images/polerp.gif)
+Lerp *all* the things!  Quick and dirty l-interp between two sets of points: sine function plotted against a Cartesian grid to polar.  There are certainly more elegant ways to do this, but I just made it because I wondered what a gradual tranformation to polar would look like.
+![Lerp Cartesian to Polar](images/polerp2.gif)
