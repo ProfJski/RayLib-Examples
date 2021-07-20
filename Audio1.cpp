@@ -8,8 +8,9 @@
 #include "tools/kiss_fftr.c"
 #include <cmath>
 
-//Raylib based audio player, oscilloscope and frequency spectrum analyzer by Prof. Jski
-//Raylib library by Ramon Santamaria.  Dolph-Chebyshev time-domain function by Practical Cryptography.  Thank you!  This rocked for narrow-band frequency detection.
+//Raylib based audio player, oscilloscope and discrete Fast Fourier Transform (DFFT) frequency spectrum analyzer
+//Raylib library by Ramon Santamaria.  https://github.com/raysan5/raylib
+//Dolph-Chebyshev time-domain function by Practical Cryptography.  Thank you!  This rocked for narrow-band frequency detection.
 //KISS FFT by Marc Borgerding https://github.com/mborgerding/kissfft
 //All else by Eric Jenislawski
 
@@ -84,10 +85,8 @@ int main()
 
     SetTargetFPS(60);
 
-    //Wave mywave = LoadWave("ComeTogether.wav");
-    Wave mywave = LoadWave("cherrypure.wav");
-    //Wave mywave = LoadWave("Beet1.wav");
-    //Wave mywave = LoadWave("CoeCountry.wav");
+    //Change "YourWaveFile.wav" to the filename of the wave file you wish to analyze
+    Wave mywave = LoadWave("YourWaveFile.wav");
     WaveFormat(&mywave,44100,16,1);
     cout<<"Sample Count="<<mywave.sampleCount<<endl;
     cout<<"Sample Size="<<mywave.sampleSize<<endl;
