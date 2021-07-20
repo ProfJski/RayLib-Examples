@@ -32,7 +32,7 @@ int main()
     camera.target=(Vector3){0.0,0.0,0.0};
     camera.up = (Vector3){ 0.0f, 1.0f, 0.0f };
     camera.fovy = 60.0f;
-    camera.type = CAMERA_PERSPECTIVE;
+    camera.projection = CAMERA_PERSPECTIVE;
     SetCameraMode(camera,CAMERA_FREE);
     SetTargetFPS(30);
 
