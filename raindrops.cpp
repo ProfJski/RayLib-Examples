@@ -212,7 +212,7 @@ int main()
     camera.target=(Vector3){0.0,0.0,0.0};
     camera.up = (Vector3){ 0.0f, 1.0f, 0.0f };
     camera.fovy = 60.0f;
-    camera.type = CAMERA_PERSPECTIVE;
+    camera.projection = CAMERA_PERSPECTIVE;
 
     //Make the glass
     Mesh planemesh=GenMeshCube(500.0,500.0,1.0);
