@@ -93,8 +93,11 @@ Lerp *all* the things!  Quick and dirty linear interpolation between two sets of
 
 ## Modulus Multiplication Explorer
 Similar to the graphs on [Mathologer's video on Tesla's Vortex Math](https://www.youtube.com/watch?v=6ZrO90AI0c8&t=1238s)
+
 The program explores iterative multiplication groups in a Modulo-N space and the suprising patterns that result.
+
 See also [Mathologer's video on Times Tables, Mandlebrot and the Heart of Mathematics](https://www.youtube.com/watch?v=qhbuKbxJsk8) for more info.
+
 Choose your modulus, multiplier and starting value using the sliders or use the key pairs O and P, K and L, M and , respectively for finer control.
 Camera controls are overkill (default view should be fine) but include Z and X for zoom, and A D W and S for panning.
 Certain combinations of modulus and multiplier result in interesting graphs: cardioids, nephroids, and more.
