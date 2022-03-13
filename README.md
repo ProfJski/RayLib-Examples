@@ -92,7 +92,7 @@ Lerp *all* the things!  Quick and dirty linear interpolation between two sets of
 
 
 ## Modulus Multiplication Explorer
-Similar to the graphs on [Mathologer's video on Tesla's Vortex Math](https://www.youtube.com/watch?v=6ZrO90AI0c8&t=1238s)
+Similar to the graphs seen in [Mathologer's video on Tesla's Vortex Math](https://www.youtube.com/watch?v=6ZrO90AI0c8&t=1238s)
 
 The program explores iterative multiplication groups in a Modulo-N space and the suprising patterns that result.
 
